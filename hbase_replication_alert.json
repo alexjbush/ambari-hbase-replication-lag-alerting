@@ -1,0 +1,31 @@
+{
+  "AlertDefinition": {
+    "service_name": "HBASE",
+    "component_name": "HBASE_MASTER",
+    "name": "hbase_replication_alerting",
+    "label": "HBase Replication Alerting",
+    "description": "This alert is triggered if Hbase replication is lagging or failing.",
+    "interval": 5,
+    "scope": "SERVICE",
+    "enabled": true,
+    "source": {
+      "type": "SCRIPT",
+      "path": "hbaseReplicationAlert.py",
+      "parameters": [
+      {
+        "name": "max_log_queue",
+        "display_name": "Maximum log length",
+        "value": "1000",
+        "type": "STRING",
+        "description": "Maximum length of the HBase replication log"
+      },
+      {
+        "name": "max_replication_lag",
+        "display_name": "Maximum replication lag",
+        "value": "1000",
+        "type": "STRING",
+        "description": "Maximum size of the HBase replication lag"
+      }]
+    }
+  }
+}
